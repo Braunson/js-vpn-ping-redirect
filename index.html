@@ -1,0 +1,29 @@
+<html>
+		<head>
+		<title>JS VPN Ping Demo</title>
+		<meta charset="utf-8" />
+		<script src="ping.js"></script>
+	</head>
+	<body>
+		<p>Please wait..</p>
+
+		<script>
+			// Define the VPN IP or link we want to ping
+			var pLink = '10.5.2.80';
+
+			// Define our ping function and logic
+			function pingLink() {
+				ping(pLink, function(resp) {
+					if( resp == 'responded' ) {
+						window.location.href = 'http://' + pLink;
+					} else {
+					   setTimeout(pingLink,2000);
+					}
+				});
+			}
+
+			// Start on load
+			window.onload = pingLink;
+		</script>
+	</body>
+</html>
